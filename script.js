@@ -33,7 +33,7 @@ document.getElementById('opening-video').onended = () => { showLayer('chat'); re
 
 // --- [2] 대화 데이터 ---
 const dialogueData = {
-    "start": { text: "아 춥다~ 오늘 날씨 장난 아니다! 너는 오늘 뭐 마실 거야?", choices: [{ text: "오늘은 추우니까 넌 따뜻한 것 마실 거지?", next: "q2" }] },
+    "start": { text: "와, 진짜 춥다! 오늘 날씨 장난 아닌데? 너는 뭐 마실 거야?", choices: [{ text: "날이 너무 추워서 그런데, 너는 따뜻한 거 마실 거지?", next: "q2" }] },
     "q2": { text: "아니? 나는 얼어 죽어도 아이스 아메리카노를 마실 거야.", choices: [{ text: "헐~ 나는 따뜻한 아메리카노를 마실래.", next: "q3" }] },
     "q3": { text: "내 거는 연하게(1샷), 얼음량은 많이 해서 주문해줘.", choices: [{ text: "나는 샷을 하나 추가할게(2샷).", next: "q4" }] },
     "q4": { text: "전에 키오스크에서 주문해본 적 있어?", choices: [{ text: "아니~ 처음이야! 근데 나 혼자 할 수 있을 것 같아.", next: "go_kiosk" }] },
