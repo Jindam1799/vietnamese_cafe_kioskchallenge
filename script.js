@@ -44,7 +44,7 @@ const dialogueData = {
     "ginger_2": { speaker: "boss", text: "덜 달게요? 죄송한데 고객님 저희가 청이라서 당도 조절을 할 수가 없고요. 원하시면 물을 더 많이 넣어드릴게요.", choices: [{ text: "아.. 그럼 그냥 원래 먹던 걸로 할게요.", next: "go_kiosk_warning" }] },
     "berry_1": { text: "(시간이 얼마나 걸릴지 물어본다)", choices: [{ text: "사장님~ 혹시 생딸기우유 시키면 얼마나 걸릴까요?", next: "berry_2" }] },
     "berry_2": { speaker: "boss", text: "금방 나와요~", choices: [{ text: "음.. 고민되네. 그냥 커피 마셔야겠다.", next: "go_kiosk_warning" }] },
-    "boss_stage_1": { text: "(결제가 계속 실패한다... 직원을 불러볼까?)", choices: [{ text: "사장님, 키오스크 결제가 안 돼요. 혹시 한번 봐줄 수 있을까요?", next: "boss_stage_2" }] },
+    "boss_stage_1": { text: "(결제가 계속 실패한다... 직원을 불러볼까?)", choices: [{ text: "사장님, 키오스크에서 결제가 안 돼요. 혹시 한번 봐 주실 수 있을까요?", next: "boss_stage_2" }] },
     "boss_stage_2": { speaker: "boss", text: "네, 잠시만요. 고객님~ 여기에 카드를 푹 꽂아야 결제할 수 있거든요. 안 그러면 아까처럼 결제가 안 되고요.", choices: [{ text: "아하! 푹 꽂아야 하는구나. 다시 해볼게요.", next: "go_retry_payment" }] }
 };
 
