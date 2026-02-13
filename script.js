@@ -53,8 +53,8 @@ function renderDialogue(key) {
         setTimeout(() => {
             if (key === 'go_keypad') showPointKeypad();
             else if (key === 'go_payment_methods') { showLayer('kiosk'); showPaymentMethods(); }
-            else if (key === 'go_retry_payment') { chatHeaderTitle.innerText = "민지 (Friend)"; showLayer('kiosk'); showPaymentMethods(); }
-            else if (key === 'go_kiosk_warning') { chatHeaderTitle.innerText = "민지 (Friend)"; showLayer('kiosk'); showCustomPopup("⚠️ 주문 주의", "딴짓하지 말고 원래 주문하려던 메뉴를 시키자!", "알겠어", () => modalLayer.style.display='none'); }
+            else if (key === 'go_retry_payment') { chatHeaderTitle.innerText = "나리 (Friend)"; showLayer('kiosk'); showPaymentMethods(); }
+            else if (key === 'go_kiosk_warning') { chatHeaderTitle.innerText = "나리 (Friend)"; showLayer('kiosk'); showCustomPopup("⚠️ 주문 주의", "딴짓하지 말고 원래 주문하려던 메뉴를 시키자!", "알겠어", () => modalLayer.style.display='none'); }
             else showLayer('kiosk');
         }, 800);
         return;
@@ -113,9 +113,9 @@ function handlePaymentClick() {
     if (cart.length === 0) return;
     const minji = cart.find(i => i.name === "아메리카노" && i.temp === "ICE" && i.shot === 1 && i.ice === "많이");
     const me = cart.find(i => i.name === "아메리카노" && i.temp === "HOT" && i.shot === 2);
-    if (!minji || !me) { showCustomPopup("😫 주문 확인", "주문이 미션과 다릅니다.<br>민지: 아이스/1샷/얼음많이<br>나: 따뜻한/2샷<br>확인해보세요!", "장바구니 수정", () => { modalLayer.style.display='none'; openCart(); }); return; }
+    if (!minji || !me) { showCustomPopup("😫 주문 확인", "주문이 미션과 다릅니다.<br>나리: 아이스/1샷/얼음많이<br>나: 따뜻한/2샷<br>확인해보세요!", "장바구니 수정", () => { modalLayer.style.display='none'; openCart(); }); return; }
     if (!isSuddenPhase) { isSuddenPhase = true; clearInterval(timerInterval); showLayer('chat'); renderDialogue('sudden_start'); }
-    else if (!cart.find(i => i.name === "초코케이크")) { showCustomPopup("🍰 케이크 추가", "민지가 초코케이크도 먹고 싶대요!", "확인", () => { modalLayer.style.display='none'; }); }
+    else if (!cart.find(i => i.name === "초코케이크")) { showCustomPopup("🍰 케이크 추가", "나리가 초코케이크도 먹고 싶대요!", "확인", () => { modalLayer.style.display='none'; }); }
     else if (!isPointPhase) { isPointPhase = true; showLayer('chat'); renderDialogue('point_start'); }
     else { showPointKeypad(); }
 }
@@ -127,7 +127,7 @@ function pressKey(k) { if (k === 'C') inputPhone = "010"; else if (inputPhone.le
 function confirmPoints() { if(inputPhone === CORRECT_PHONE) { modalLayer.style.display='none'; showLayer('chat'); renderDialogue('pay_credit_start'); } else { showCustomPopup("❌ 번호 오류", "번호가 내 번호와 다릅니다!<br>힌트: 010-1234-5678", "다시 입력", () => renderKeypadContent()); } }
 
 function showPaymentMethods() { modalLayer.style.display = "flex"; modalBox.innerHTML = `<div class="pop-in"><h3>결제 수단 선택</h3><div style="display:flex; flex-direction:column; gap:12px; margin:20px 0;"><button class="btn-confirm-large" onclick="showRestriction()" style="background:#fff; border:2px solid #eee; color:#aaa;">💳 체크카드 결제</button><button class="btn-confirm-large" onclick="processPayment('신용카드')" style="background:#fff; border:2px solid #eee; color:var(--primary);">🏦 신용카드 결제</button></div><p style="font-size:0.85rem; color:#888;">현금은 카운터로 문의하세요.</p></div>`; }
-function showRestriction() { showCustomPopup("🤔 잠깐만요!", "민지는 <b>'신용카드'</b>로 결제하겠다고 했어요.", "다시 선택", () => showPaymentMethods()); }
+function showRestriction() { showCustomPopup("🤔 잠깐만요!", "나리는 <b>'신용카드'</b>로 결제하겠다고 했어요.", "다시 선택", () => showPaymentMethods()); }
 function processPayment(m) {
     if (m === '신용카드' && !hasPaymentFailed) { showCustomPopup("⚠️ 결제 오류", "IC칩 인식 실패!<br>카드를 확인해주세요.", "사장님 호출", () => { hasPaymentFailed = true; modalLayer.style.display = 'none'; showLayer('chat'); renderDialogue('boss_stage_1'); }); return; }
     modalBox.innerHTML = `<h2>${m} 결제 중</h2><p>카드를 꾹! 눌러주세요.</p>`; setTimeout(() => showFinalReceipt(m), 2500);
